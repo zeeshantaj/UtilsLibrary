@@ -35,6 +35,9 @@ publishing {
         release(MavenPublication) {
             //from components.release
             from components.findByName('release')
+            groupId = 'com.github.zeeshantaj'
+            artifactId = 'UtilsLibrary'
+            version = 'v1.0.0'
         }
     }
 }
