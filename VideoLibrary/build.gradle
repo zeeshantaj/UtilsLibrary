@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
 }
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
 
 android {
     namespace 'com.example.videolibrary'
@@ -9,6 +11,8 @@ android {
     defaultConfig {
         minSdk 27
         targetSdk 32
+        versionCode 1
+        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -23,6 +27,15 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            //from components.release
+            from components.findByName('release')
+        }
     }
 }
 
